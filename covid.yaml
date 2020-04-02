@@ -1,0 +1,17 @@
+# application: next-scraft
+runtime: nodejs10
+service: covid
+
+handlers:
+- url: /
+  secure: always
+  redirect_http_response_code: 301
+  static_files: public/index.html
+  upload: public/index.html
+
+# access the static resources
+- url: /(.*\.(?:ico|css|html|js|png|jpg|gif|eot|ttf|svg|woff|woff2))
+  static_files: public/\1
+  upload: public/(.*)
+
+
